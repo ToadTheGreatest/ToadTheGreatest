@@ -36,7 +36,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: #222;
+            background: transparent;
             color: white;
         }
 
@@ -49,8 +49,17 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #aaa;
             text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
         }
 
         .menu-toggle {
