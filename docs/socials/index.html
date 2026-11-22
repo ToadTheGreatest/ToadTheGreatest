@@ -59,14 +59,16 @@
             background-color: transparent;
             text-decoration: underline;
         }
-        button.youtube {
-            color: #fff;
-            background-color: #f00;
-            border-color: #f00;
+        button {
             border-radius: 10px;
             border-style: solid;
             width: 100px;
             height: 40px;
+        }
+        button.youtube {
+            color: #fff;
+            background-color: #f00;
+            border-color: #f00;
         }
         button.youtube:hover {
             background-color: #c00;
@@ -75,6 +77,19 @@
         button.youtube:active {
             background-color: #800;
             border-color: #800;
+        }
+        button.github {
+            color: #fff;
+            background-color: #666;
+            border-color: #666;
+        }
+        button.github:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+        button.github:active {
+            background-color: #000;
+            border-color: #000;
         }
     </style>
 </head>
@@ -93,6 +108,7 @@
             <h1>Welcome to ToadTheGreatest's Website!</h1>
             <span id="text">
                 <button class="youtube" onclick="window.open('https:\/\/youtube.com/@ToadTheGreatest')">YouTube</button>
+                <button class="github" onclick="window.open('https:\/\/github.com/ToadTheGreatest')">GitHub</button>
             </span>
         </div>
     </div>
