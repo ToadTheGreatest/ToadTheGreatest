@@ -31,8 +31,42 @@
         }
 
         .navbar {
-            background-color: transparent;
-            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
         }
 
         .navbar ul {
@@ -59,6 +93,7 @@
             background-color: transparent;
             text-decoration: underline;
         }
+
         .version {
             position: absolute;
             left: 10px;
@@ -70,7 +105,8 @@
 
 <body>
     <nav class="navbar">
-        <ul>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul class="nav-links">
             <li><a class="active" href="./">Home</a></li>
             <li><a href="./socials">Socials</a></li>
             <li><a href="./happenings/">Happenings</a></li>
@@ -83,6 +119,9 @@
             <h1>Welcome to ToadTheGreatest's Website!</h1>
             <span id="text">
                 Hello people (you are not axolotls, i am). This is my website.
+            </span>
+            <span>
+                I am currently testing a menu bar that is different on mobile devices.
             </span>
             <span class="version">v1.0</span>
         </div>
