@@ -36,6 +36,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
+            background: #222;
+            color: white;
         }
 
         .nav-links {
@@ -46,12 +48,19 @@
             padding: 0;
         }
 
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
             background: none;
             border: none;
+            color: white;
             cursor: pointer;
+            z-index: 1001;
         }
 
         @media (max-width: 768px) {
@@ -60,46 +69,28 @@
             }
 
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 260px;
+                background: #333;
                 flex-direction: column;
-                width: 100%;
+                padding: 4.5rem 2rem 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
             }
 
             .nav-links.open {
-                display: flex;
+                transform: translateX(0);
             }
         }
 
-        .navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        .navbar a {
-            display: block;
-            color: rgb(187, 187, 187);
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            color: white;
-            background-color: transparent;
-        }
-
-        .navbar a.active {
-            background-color: transparent;
-            text-decoration: underline;
-        }
-
-        .version {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            color: #888;
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -142,6 +133,7 @@
         toggleButton.addEventListener('click', () => {
             const isOpen = navLinks.classList.toggle('open');
             toggleButton.setAttribute('aria-expanded', isOpen);
+            toggleButton.textContent = isOpen ? '✕' : '☰'; // Switches icon to X when open
         });
     </script>
 </body>
