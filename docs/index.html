@@ -134,6 +134,14 @@
         if (urlParams.get('secret') === "VSauce") {
             document.getElementById("text").innerHTML = "Hello there, I am toadthegreatest. or am i???????????????????????"
         }
+
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        toggleButton.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            toggleButton.setAttribute('aria-expanded', isOpen);
+        });
     </script>
 </body>
 
