@@ -17,3 +17,5 @@ Here are some ideas to get you started:
 
 # My Socials
 [YouTube](https://youtube.com/@ToadTheGreatest)
+[Scratch](https://scratch.mit.edu/users/ToadTheGreatest)
+[My Website](https://toadthegreatest.xyz)
