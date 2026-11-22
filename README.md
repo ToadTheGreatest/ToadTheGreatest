@@ -16,4 +16,4 @@ Here are some ideas to get you started:
 -->
 
 # My Socials
-[YouTube](youtube.com/@ToadTheGreatest)
+[YouTube](https://youtube.com/@ToadTheGreatest)
