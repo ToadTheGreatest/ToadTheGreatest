@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ToadTheGreatest's Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 48px);
+        }
+
+        .background {
+            background-color: #222;
+            border-radius: 30px;
+            width: 80vw;
+            height: 80vh;
+            padding: 20px;
+        }
+
+        h1 {
+            padding: 10px;
+        }
+
+        .navbar {
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar a {
+            display: block;
+            color: rgb(187, 187, 187);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: white;
+            background-color: transparent;
+        }
+
+        .navbar a.active {
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        button.youtube {
+            color: #fff;
+            background-color: #f00;
+            border-color: #f00;
+            border-radius: 10px;
+            border-style: solid;
+            width: 100px;
+            height: 40px;
+        }
+        button.youtube:hover {
+            background-color: #c00;
+            border-color: #c00;
+        }
+        button.youtube:active {
+            background-color: #800;
+            border-color: #800;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="../">Home</a></li>
+            <li><a href="./">Socials</a></li>
+            <li><a href="../">Games</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="background">
+            <!-- Main Content -->
+            <h1>Welcome to ToadTheGreatest's Website!</h1>
+            <span id="text">
+                <button class="youtube" onclick="window.open('https:\/\/youtube.com/@ToadTheGreatest')">YouTube</button>
+            </span>
+        </div>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
