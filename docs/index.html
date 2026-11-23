@@ -149,42 +149,37 @@
         toggleButton.addEventListener('click', () => {
             const isOpen = navLinks.classList.toggle('open');
             toggleButton.setAttribute('aria-expanded', isOpen);
-            toggleButton.textContent = isOpen ? '✕' : '☰'; // Switches icon to X when open
+            toggleButton.textContent = isOpen ? '✕' : '☰';
         });
 
-        const secretCode = "i am a unicorn";
-        let typedBuffer = "";
+        function setupCheatCodes(codesMap) {
+            let buffer = "";
+            const maxLength = Math.max(...Object.keys(codesMap).map((code) => code.length));
 
-        document.addEventListener("keydown", (event) => {
-            // Ignore typing inside inputs, textareas, or editable elements
-            const target = event.target;
-            if (
-                target.tagName === "INPUT" ||
-                target.tagName === "TEXTAREA" ||
-                target.isContentEditable
-            ) {
-                return;
-            }
-
-            // Only record single printable characters
-            if (event.key.length === 1) {
-                typedBuffer += event.key.toLowerCase();
-
-                // Keep only the last N characters to prevent unbounded growth
-                if (typedBuffer.length > secretCode.length) {
-                    typedBuffer = typedBuffer.slice(-secretCode.length);
+            document.addEventListener("keydown", (event) => {
+                if (["INPUT", "TEXTAREA"].includes(event.target.tagName) || event.target.isContentEditable) {
+                    return;
                 }
 
-                if (typedBuffer === secretCode.toLowerCase()) {
-                    triggerSecret1();
-                    typedBuffer = ""; // Reset so it can trigger again
-                }
-            }
-        });
+                if (event.key.length > 1 && !event.key.startsWith("Arrow")) return;
 
-        function triggerSecret1() {
-            window.location.href = "./i-am-a-unicorn/"
+                buffer = (buffer + event.key.toLowerCase()).slice(-maxLength);
+
+                for (const [code, callback] of Object.entries(codesMap)) {
+                    if (buffer.endsWith(code.toLowerCase())) {
+                        callback();
+                        buffer = "";
+                        break;
+                    }
+                }
+            });
         }
+
+        setupCheatCodes({
+            "i am a unicorn": () => {window.location.href = "./i-am-a-unicorn"},
+            "hack a bank account": () => {window.location.href = "./hack-a-bank-account"},
+        });
+
 
     </script>
 </body>
