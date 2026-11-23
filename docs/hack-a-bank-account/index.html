@@ -8,7 +8,8 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #444;
+            background-color: #111;
+            overflow: hidden;
             color: #fff;
         }
 
@@ -104,7 +105,7 @@
 
         canvas {
             pointer-events: none;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
         }
@@ -128,18 +129,11 @@
         <div class="background">
             <!-- Main Content -->
             <h1>Welcome to ToadTheGreatest's Website!</h1>
-            <h3>THIS PAGE OF MY SITE IS DEDICATED TO ONE OF MY FREINDS WHO WANTS ME TO HACK A BANK ACCOUNT EVEN THOUGH I WONT CUZ I DONT WANNA COMMIT A CRIME</h3>
+            <h3>THIS PAGE OF MY SITE IS DEDICATED TO ONE OF MY FREINDS WHO WANTS ME TO HACK A BANK ACCOUNT EVEN THOUGH I
+                WONT CUZ I DONT WANNA COMMIT A CRIME</h3>
         </div>
     </div>
     <script>
-        const queryString = window.location.search;
-
-        const urlParams = new URLSearchParams(queryString);
-
-        if (urlParams.get('secret') === "VSauce") {
-            document.getElementById("text").innerHTML = "Hello there, I am toadthegreatest. or am i???????????????????????"
-        }
-
         const toggleButton = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
@@ -149,40 +143,43 @@
             toggleButton.textContent = isOpen ? '✕' : '☰'; // Switches icon to X when open
         });
 
-        // RAINBOW SPARKLY
+        // MATRIX RAIN EFFECT
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
 
-        var SIZE = 5; // size (pixels) of each square
-        var SPEED = 1 // time (milliseconds) between redraws
-
-        var rnbw_sprkly = document.getElementById("canvas");
-        var ctx = rnbw_sprkly.getContext("2d");
-        var color = "#00ff00";
-        var progr = 0
-
-        function getRandomMax(mx) {
-            return Math.round(Math.random() * mx);
-        }
+        const chars = document.documentElement.innerHTML.replace(/\s+/g, '').split("");
+        const fontSize = 16;
+        let columns = 0;
+        let drops = [];
 
         function resize() {
-            rnbw_sprkly.width = window.innerWidth;
-            rnbw_sprkly.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = Array(columns).fill(1);
         }
 
         function drawMatrix() {
-            ctx.clearRect(0, 0, rnbw_sprkly.width, rnbw_sprkly.height);
-            ctx.fillStyle = color
-            ctx.fillText(document.innerHTML, 0, -progr, canvas.width);
-            progr += SPEED
-            if (progr > canvas.width) {
-                progr = 0
+            ctx.fillStyle = "rgba(17, 17, 17, 0.08)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00ff00";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const randomChar = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(randomChar, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
             }
-            window.requestAnimationFrame(drawMatrix);
         }
 
         resize();
-        window.requestAnimationFrame(drawMatrix);
-
         window.addEventListener("resize", resize);
+        setInterval(drawMatrix, 40);
     </script>
 </body>
 
