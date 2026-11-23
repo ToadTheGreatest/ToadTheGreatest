@@ -20,7 +20,7 @@
         }
 
         .background {
-            background-color: #222;
+            background-color: transparent;
             border-radius: 30px;
             width: 80vw;
             height: 80vh;
@@ -152,7 +152,7 @@
         // RAINBOW SPARKLY
 
         var SIZE = 5; // size (pixels) of each square
-        var SPEED = 250 // time (milliseconds) between redraws
+        var SPEED = 1 // time (milliseconds) between redraws
 
         var rnbw_sprkly = document.getElementById("canvas");
         var ctx = rnbw_sprkly.getContext("2d");
@@ -170,15 +170,15 @@
 
         function drawMatrix() {
             ctx.clearRect(0, 0, rnbw_sprkly.width, rnbw_sprkly.height);
+            ctx.fillStyle = color
             ctx.fillText(document.innerHTML, 0, -progr, canvas.width);
-            progr += 1
+            progr += SPEED
             if (progr > canvas.width) {
                 progr = 0
             }
             window.requestAnimationFrame(drawMatrix);
         }
 
-        // init rainbow sparkly
         resize();
         window.requestAnimationFrame(drawMatrix);
 
