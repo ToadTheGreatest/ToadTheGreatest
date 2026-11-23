@@ -151,6 +151,41 @@
             toggleButton.setAttribute('aria-expanded', isOpen);
             toggleButton.textContent = isOpen ? '✕' : '☰'; // Switches icon to X when open
         });
+
+        const secretCode = "i am a unicorn";
+        let typedBuffer = "";
+
+        document.addEventListener("keydown", (event) => {
+            // Ignore typing inside inputs, textareas, or editable elements
+            const target = event.target;
+            if (
+                target.tagName === "INPUT" ||
+                target.tagName === "TEXTAREA" ||
+                target.isContentEditable
+            ) {
+                return;
+            }
+
+            // Only record single printable characters
+            if (event.key.length === 1) {
+                typedBuffer += event.key.toLowerCase();
+
+                // Keep only the last N characters to prevent unbounded growth
+                if (typedBuffer.length > secretCode.length) {
+                    typedBuffer = typedBuffer.slice(-secretCode.length);
+                }
+
+                if (typedBuffer === secretCode.toLowerCase()) {
+                    triggerSecret1();
+                    typedBuffer = ""; // Reset so it can trigger again
+                }
+            }
+        });
+
+        function triggerSecret1() {
+            window.location.href = "./i-am-a-unicorn/"
+        }
+
     </script>
 </body>
 
