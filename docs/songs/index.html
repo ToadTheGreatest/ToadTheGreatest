@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ToadTheGreatest's Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 48px);
+        }
+
+        .background {
+            background-color: #222;
+            border-radius: 30px;
+            width: 80vw;
+            height: 80vh;
+            padding: 20px;
+        }
+
+        h1 {
+            padding: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: transparent;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 260px;
+                background: #333;
+                flex-direction: column;
+                padding: 4.5rem 2rem 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.open {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul class="nav-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../socials/">Socials</a></li>
+            <li><a href="../happenings/">Happenings</a></li>
+            <li><a class="active" href="./">Songs</a></li>
+            <!--<li><a href="">Games</a></li>-->
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="background">
+            <!-- Main Content -->
+            <h1>Welcome to ToadTheGreatest's Website!</h1>
+            <h3>My Songs</h3>
+            <div>
+                <!-- fill me with youtube embeds -->
+            </div>
+        </div>
+    </div>
+    <script>
+        const queryString = window.location.search;
+
+        const urlParams = new URLSearchParams(queryString);
+
+        if (urlParams.get('secret') === "VSauce") {
+            document.getElementById("text").innerHTML = "Hello there, I am toadthegreatest. or am i???????????????????????"
+        }
+
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        toggleButton.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            toggleButton.setAttribute('aria-expanded', isOpen);
+            toggleButton.textContent = isOpen ? '✕' : '☰'; // Switches icon to X when open
+        });
+    </script>
+</body>
+
+</html>
